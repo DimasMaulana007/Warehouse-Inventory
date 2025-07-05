@@ -1,0 +1,37 @@
+# Jangan upload file konfigurasi rahasia
+.env
+config.php
+helper.php
+
+# Mengabaikan Semua File
+*.log
+*.cache
+*.tmp
+*.sql
+
+# Tidak Menampilkan Folder
+PhpSpreadsheet-4.3.1/
+pages/
+page/*.php
+
+# File dari OS atau editor
+.DS_Store
+Thumbs.db
+
+# Folder dari IDE
+.vscode/
+.idea/
+
+# Composer dependencies (jika pakai)
+vendor/
+
+# Backup file
+*.bak
+*.old
+*.zip
+*.rar
+*.tar.gz
+
+# File sistem operasi
+ehthumbs.db
+Icon?
