@@ -12,7 +12,9 @@ helper.php
 # Tidak Menampilkan Folder
 PhpSpreadsheet-4.3.1/
 pages/
-page/*.php
+page/*
+!page/.gitkeep
+
 
 # File dari OS atau editor
 .DS_Store
