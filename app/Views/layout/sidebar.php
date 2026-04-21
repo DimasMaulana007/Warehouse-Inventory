@@ -4,6 +4,7 @@ $role = $_SESSION['user_role'] ?? 'guest';
 $username = $_SESSION['user_id'] ?? 'Guest';
 
 $roleDisplay = ucfirst($role);
+$currentRoute = $_GET['route'] ?? 'dashboard';
 ?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
@@ -27,66 +28,69 @@ $roleDisplay = ucfirst($role);
       <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
         
         <li class="nav-item">
-          <a href="?route=dashboard" class="nav-link <?= (!isset($_GET['route']) || $_GET['route'] == 'dashboard') ? 'active' : '' ?>">
+          <a href="?route=dashboard" class="nav-link <?= ($currentRoute == 'dashboard' || $currentRoute == '') ? 'active' : '' ?>">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>Dashboard</p>
           </a>
         </li>
 
         <?php if ($role === 'admin'): ?>
+        
+        <li class="nav-header">MASTER DATA UTAMA</li>
+        
         <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-clipboard"></i>
-            <p>Data Stok <i class="fas fa-angle-left right"></i></p>
+          <a href="?route=users" class="nav-link <?= (strpos($currentRoute, 'users') === 0) ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-users-cog"></i>
+            <p>Manajemen Pengguna</p>
           </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item"><a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Stok Bahan Lapak</p></a></li>
-            <li class="nav-item"><a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Stok Bahan Utama</p></a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-            <i class="nav-icon fas fa-database"></i>
-            <p>Masterdata <i class="fas fa-angle-left right"></i></p>
-          </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item"><a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Kode Bahan Baku</p></a></li>
-            <li class="nav-item"><a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Kode Kendaraan</p></a></li>
-          </ul>
         </li>
 
-        <?php elseif ($role === 'Bahan_lapak'): ?>
+        <li class="nav-item">
+          <a href="?route=kendaraan" class="nav-link <?= (strpos($currentRoute, 'kendaraan') === 0) ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-truck"></i>
+            <p>Sistem Kendaraan</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="?route=suppliers" class="nav-link <?= (strpos($currentRoute, 'suppliers') === 0) ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-industry"></i>
+            <p>Data Pemasok</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="?route=customers" class="nav-link <?= (strpos($currentRoute, 'customers') === 0) ? 'active' : '' ?>">
+            <i class="nav-icon fas fa-user-tie"></i>
+            <p>Data Pelanggan</p>
+          </a>
+        </li>
+
+        <li class="nav-header">LOGISTIK & PRODUKSI</li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-box"></i>
+            <p>Modul Material <span class="badge badge-warning right">Segera</span></p>
+          </a>
+        </li>
+
+        <?php elseif ($role === 'warehouse' || $role === 'Bahan_lapak'): ?>
         <li class="nav-item">
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-industry"></i>
-            <p>Gudang Bahan Lapak <i class="fas fa-angle-left right"></i></p>
+            <p>Gudang Lapak <span class="badge badge-warning right">Segera</span></p>
           </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item"><a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Bahan Lapak Masuk</p></a></li>
-          </ul>
         </li>
 
         <?php elseif ($role === 'teknisi'): ?>
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="?route=kendaraan" class="nav-link <?= (strpos($currentRoute, 'kendaraan') === 0) ? 'active' : '' ?>">
             <i class="nav-icon fas fa-cogs"></i>
-            <p>Kendaraan <i class="fas fa-angle-left right"></i></p>
+            <p>Data Kendaraan</p>
           </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item"><a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>Data Kendaraan</p></a></li>
-          </ul>
         </li>
         <?php endif; ?>
         
-        <!-- Pemisah Modul MVC Baru -->
-        <li class="nav-header">MODUL BARU (MVC V2)</li>
-        <li class="nav-item">
-          <a href="?route=kendaraan" class="nav-link <?= (isset($_GET['route']) && $_GET['route'] == 'kendaraan') ? 'active' : '' ?>">
-            <i class="nav-icon fas fa-truck"></i>
-            <p>Manajemen Kendaraan</p>
-          </a>
-        </li>
-
       </ul>
     </nav>
   </div>

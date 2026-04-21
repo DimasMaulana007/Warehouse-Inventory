@@ -17,7 +17,7 @@ class AuthController {
 
             $db = Database::getInstance()->getConnection();
             
-            $stmt = $db->prepare("SELECT * FROM users WHERE username = :username AND aktif = 'aktif' LIMIT 1");
+            $stmt = $db->prepare("SELECT * FROM users WHERE username = :username AND is_active = TRUE LIMIT 1");
             $stmt->execute(['username' => $username]);
             $user = $stmt->fetch();
 

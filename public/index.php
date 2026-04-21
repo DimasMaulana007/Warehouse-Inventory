@@ -38,6 +38,38 @@ $router->get('/logout', 'AuthController@logout');
 
 $router->get('/dashboard', 'DashboardController@index');
 
+// Modul Kendaraan
+$router->get('/kendaraan', 'KendaraanController@index');
+$router->get('/kendaraan/create', 'KendaraanController@create');
+$router->post('/kendaraan/store', 'KendaraanController@store');
+$router->get('/kendaraan/edit', 'KendaraanController@edit');
+$router->post('/kendaraan/update', 'KendaraanController@update');
+$router->get('/kendaraan/delete', 'KendaraanController@delete');
+
+// Modul Master Pemasok (Suppliers)
+$router->get('/suppliers', 'SupplierController@index');
+$router->get('/suppliers/create', 'SupplierController@create');
+$router->post('/suppliers/store', 'SupplierController@store');
+$router->get('/suppliers/edit', 'SupplierController@edit');
+$router->post('/suppliers/update', 'SupplierController@update');
+$router->get('/suppliers/delete', 'SupplierController@delete');
+
+// Modul Master Pelanggan (Customers)
+$router->get('/customers', 'CustomerController@index');
+$router->get('/customers/create', 'CustomerController@create');
+$router->post('/customers/store', 'CustomerController@store');
+$router->get('/customers/edit', 'CustomerController@edit');
+$router->post('/customers/update', 'CustomerController@update');
+$router->get('/customers/delete', 'CustomerController@delete');
+
+// Modul Manajemen Pengguna (Users) - Khusus Admin
+$router->get('/users', 'UserController@index');
+$router->get('/users/create', 'UserController@create');
+$router->post('/users/store', 'UserController@store');
+$router->get('/users/edit', 'UserController@edit');
+$router->post('/users/update', 'UserController@update');
+$router->get('/users/delete', 'UserController@delete');
+
 // --------------------------------
 
 // Eksekusi (Dispatching)

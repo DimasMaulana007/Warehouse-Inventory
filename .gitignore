@@ -1,5 +1,30 @@
+# File Konfigurasi Rahasia (Database, API Keys, Credentials)
 .env
+.env.backup
+.env.local
+
+# Server & Dependency Eksternal
 /vendor/
+/node_modules/
+
+# File Log & Debug
+*.log
+error_log
+php_errors.log
+
+# IDE & OS Files
 .idea/
 .vscode/
-*.log
+.DS_Store
+Thumbs.db
+
+# Folder Upload Gambar / File Dinamis. 
+# (Asumsinya nanti jika sistem sudah ada fitur unggah foto/dokumen, file foto tidak ikut dipush)
+/public/uploads/*
+!/public/uploads/index.html
+
+# Mencegah Kebocoran Dump dan Struktur Database (Sangat Sensitif)
+*.sql
+*.sql.gz
+/database/
+
